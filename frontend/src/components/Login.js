@@ -1,18 +1,16 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 function Login({ setUser }) {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate(); // Initialize useNavigate hook
 
     const handleLogin = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/auth/login', { userName, password });
-            alert(response.data.message);
+            alert('Login successful!');
             setUser(userName);
-            navigate('/dashboard'); // Redirect to the Dashboard page
         } catch (error) {
             alert('Invalid login details');
         }

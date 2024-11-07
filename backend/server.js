@@ -24,9 +24,15 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/employee'
     console.error('MongoDB connection error:', err);
 });
 
+const authMiddleware = (req, res, next) => {
+    // Verify token logic here
+    next();
+};
+
 // Register the routes
 app.use('/api/auth', authRoutes);  
-app.use('/api/employees', employeeRoutes);
+
+app.use('/api/employees', authMiddleware, employeeRoutes);
 
 // Start the server
 const port = process.env.PORT || 5000;

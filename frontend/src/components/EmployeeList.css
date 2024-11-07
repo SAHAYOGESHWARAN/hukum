@@ -1,0 +1,114 @@
+/* EmployeeList.css */
+
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    height: 100vh;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+div {
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Form inputs and select boxes */
+input[type="text"],
+select {
+    padding: 10px;
+    margin: 10px 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(33% - 15px);
+    font-size: 14px;
+}
+
+input[type="text"]::placeholder {
+    color: #888;
+}
+
+select {
+    width: calc(33% - 15px);
+    appearance: none;
+    background-color: #f8f8f8;
+}
+
+select:focus,
+input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+table thead {
+    background-color: #007bff;
+    color: white;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Button styling */
+button {
+    padding: 8px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #c82333;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    div {
+        width: 95%;
+    }
+
+    input[type="text"],
+    select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    table,
+    table th,
+    table td {
+        font-size: 12px;
+    }
+}

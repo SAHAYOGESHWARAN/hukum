@@ -1,11 +1,10 @@
-// src/App.js
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Login from './components/Login';
-import Register from './components/Register';
-import Dashboard from './components/Dashboard';
-import CreateEmployee from './components/CreateEmployee';
-import EmployeeList from './components/EmployeeList';
+import EmployeeList from './components/EmployeeList'; // Employee list component
+import CreateEmployee from './components/CreateEmployee'; // Component to create a new employee
+import Login from './components/Login'; // Login component
+import Register from './components/Register'; // Register component
+import Dashboard from './components/Dashboard'; // Dashboard component
 
 function App() {
     const [user, setUser] = useState(null);
@@ -17,12 +16,10 @@ function App() {
                     <>
                         <Dashboard user={user} />
                         <nav>
-                            <Link to="/">Home</Link>
-                            <Link to="/employees">Employee List</Link>
-                            <Link to="/create">Create Employee</Link>
+
                         </nav>
                         <Routes>
-                            <Route path="/" element={<EmployeeList />} />
+                            
                             <Route path="/employees" element={<EmployeeList />} />
                             <Route path="/create" element={<CreateEmployee />} />
                         </Routes>

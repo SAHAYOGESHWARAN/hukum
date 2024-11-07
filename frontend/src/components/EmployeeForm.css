@@ -1,72 +1,73 @@
+/* EmployeeForm.css */
 
+/* General form styling */
 form {
-    max-width: 500px;
+    width: 100%;
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
 }
 
 label {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-top: 10px;
     display: block;
-    color: #333;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 input[type="text"],
 input[type="email"],
-select,
-input[type="file"] {
+input[type="file"],
+select {
     width: 100%;
     padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
+    margin: 8px 0;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 1rem;
-    color: #333;
 }
 
-input[type="radio"],
+input[type="radio"] {
+    margin-right: 5px;
+}
+
 input[type="checkbox"] {
-    margin-right: 8px;
-    margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 button {
-    display: inline-block;
-    width: 100%;
-    padding: 10px;
-    background-color: #4caf50;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
     border: none;
     border-radius: 4px;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 100%;
     margin-top: 10px;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
 }
 
-/* Input Focus Style */
-input:focus,
-select:focus {
-    outline: none;
-    border: 1px solid #4caf50;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+/* Error and success messages */
+.alert {
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #f44336;
+    color: white;
+    border-radius: 4px;
 }
 
-/* Form Title */
-h2 {
-    text-align: center;
-    font-size: 1.5rem;
-    color: #4caf50;
-    margin-bottom: 20px;
+.success {
+    background-color: #4CAF50;
+}
+
+/* Specific input field styling */
+input[type="text"],
+input[type="email"] {
+    text-transform: capitalize;
 }

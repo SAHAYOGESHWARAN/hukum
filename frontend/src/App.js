@@ -12,24 +12,25 @@ function App() {
     return (
         <Router>
             <div>
+                {/* If user is logged in, show dashboard and routes for employees */}
                 {user ? (
                     <>
                         <Dashboard user={user} />
-                        <nav>
-
-                        </nav>
+                       
                         <Routes>
-                            
                             <Route path="/employees" element={<EmployeeList />} />
                             <Route path="/create" element={<CreateEmployee />} />
                         </Routes>
                     </>
                 ) : (
+                    // If user is not logged in, show login and registration routes
                     <Routes>
                         <Route path="/" element={<Login setUser={setUser} />} />
                         <Route path="/register" element={<Register />} />
                     </Routes>
                 )}
+                
+                {/* Show the register link if the user is not logged in */}
                 {!user && <Link to="/register">Register</Link>}
             </div>
         </Router>

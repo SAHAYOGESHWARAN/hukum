@@ -1,12 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User'); // Assuming the User model is used for both registration and login
+const User = require('../models/User');  // Ensure this path is correct
 require('dotenv').config();
 
 const router = express.Router();
 
-// Registration Route
+// Registration route
 router.post('/register', async (req, res) => {
     const { userName, password } = req.body;
 
@@ -36,7 +36,9 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Login Route
+
+
+// Login route
 router.post('/login', async (req, res) => {
     const { userName, password } = req.body;
 

@@ -5,49 +5,101 @@
 /* Header */
 h2 {
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
     color: #333;
     margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 /* Input fields */
 input {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 12px 15px;
+    margin: 12px 0;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+/* Focus effect on input */
+input:focus {
+    border-color: #00b4d8;
+    outline: none;
 }
 
 /* Button */
 button {
     width: 100%;
-    padding: 10px;
+    padding: 14px;
     background-color: #007BFF;
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
 }
 
+/* Button Hover effect */
 button:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
-/* Responsive design for smaller screens */
+/* Button Active effect */
+button:active {
+    transform: translateY(2px);
+}
+
+/* Placeholder text styling */
+input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Responsive design for mobile devices */
 @media (max-width: 768px) {
     div {
-        padding: 15px;
+        padding: 20px;
+    }
+
+    input {
+        padding: 10px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+/* Responsive for very small screens */
+@media (max-width: 480px) {
+    h2 {
+        font-size: 24px;
     }
 
     input {
         padding: 8px;
+        font-size: 14px;
     }
 
     button {
         font-size: 14px;
-        padding: 8px;
+        padding: 10px;
+    }
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

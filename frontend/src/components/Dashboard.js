@@ -5,7 +5,7 @@ function Dashboard({ user }) {
     const [employees, setEmployees] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/employees').then(response => {
+        axios.get('http://localhost:3000/api/employees').then(response => {
             setEmployees(response.data);
         });
     }, []);

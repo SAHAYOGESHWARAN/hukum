@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
+const employeeRoutes = require('./routes/employeeRoutes');
 require('dotenv').config();
 
 const app = express();
@@ -24,7 +25,8 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/employee'
 });
 
 // Register the routes
-app.use('/api/auth', authRoutes);  // Auth routes path
+app.use('/api/auth', authRoutes);  
+app.use('/api/employees', employeeRoutes);
 
 // Start the server
 const port = process.env.PORT || 5000;

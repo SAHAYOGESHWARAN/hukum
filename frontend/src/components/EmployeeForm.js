@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import './EmployeeForm.css';
+
 
 const EmployeeForm = () => {
     const [formData, setFormData] = useState({

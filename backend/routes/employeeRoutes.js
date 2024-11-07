@@ -1,3 +1,4 @@
+// routes/employeeRoutes.js
 const express = require('express');
 const router = express.Router();
 const Employee = require('../models/Employee');
@@ -53,7 +54,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Delete an employee
+// Delete an employee by ID
 router.delete('/:id', async (req, res) => {
     try {
         await Employee.findByIdAndDelete(req.params.id);

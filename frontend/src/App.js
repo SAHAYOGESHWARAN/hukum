@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import CreateEmployee from './components/CreateEmployee';
@@ -16,9 +16,9 @@ function App() {
                     <>
                         <Dashboard user={user} />
                         <nav>
-                            <a href="/">Home</a>
-                            <a href="/employees">Employee List</a>
-                            <a href="/create">Create Employee</a>
+                            <Link to="/">Home</Link>
+                            <Link to="/employees">Employee List</Link>
+                            <Link to="/create">Create Employee</Link>
                         </nav>
                         <Routes>
                             <Route path="/" element={<EmployeeList />} />
@@ -28,7 +28,9 @@ function App() {
                     </>
                 ) : (
                     // If not logged in, show the Login component
-                    <Login setUser={setUser} />
+                    <Routes>
+                        <Route path="/" element={<Login setUser={setUser} />} />
+                    </Routes>
                 )}
             </div>
         </Router>

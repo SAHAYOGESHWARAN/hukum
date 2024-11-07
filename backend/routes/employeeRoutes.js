@@ -30,4 +30,37 @@ router.post('/create', async (req, res) => {
     }
 });
 
+// Get all employees with search and filter options
+router.get('/', async (req, res) => {
+    const { search = '', designation, course } = req.query;
+    const filter = {};
+
+    if (search) {
+        filter.name = { $regex: search, $options: 'i' };
+    }
+    if (designation) {
+        filter.designation = designation;
+    }
+    if (course) {
+        filter.course = course;
+    }
+
+    try {
+        const employees = await Employee.find(filter);
+        res.json(employees);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch employees' });
+    }
+});
+
+// Delete an employee
+router.delete('/:id', async (req, res) => {
+    try {
+        await Employee.findByIdAndDelete(req.params.id);
+        res.json({ message: 'Employee deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to delete employee' });
+    }
+});
+
 module.exports = router;

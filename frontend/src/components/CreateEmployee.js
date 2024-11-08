@@ -71,7 +71,7 @@ function CreateEmployee() {
             if (response.data.success) {
                 setMessage('Employee created successfully!');
             } else {
-                setMessage('Error: ' + response.data.message || 'Failed to create employee');
+                setMessage(' ' + response.data.message || 'Failed to create employee');
             }
         } catch (error) {
             setMessage(error.response?.data?.error || 'Error creating employee');

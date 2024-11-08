@@ -24,17 +24,9 @@ function Dashboard({ user }) {
         fetchEmployees();
     }, []);
 
-    const handleViewEmployeeList = () => {
-        navigate('/employees'); // Navigate to Employee List page
-    };
-
-    const handleAddNewEmployee = () => {
-        navigate('/create'); // Navigate to Create Employee page
-    };
-
-    const handleEditEmployee = (id) => {
-        navigate(`/edit/${id}`); // Navigate to Edit Employee page
-    };
+    const handleViewEmployeeList = () => navigate('/employees'); // Navigate to Employee List page
+    const handleAddNewEmployee = () => navigate('/create'); // Navigate to Create Employee page
+    const handleEditEmployee = (id) => navigate(`/edit/${id}`); // Navigate to Edit Employee page
 
     const handleDeleteEmployee = async (id) => {
         if (window.confirm("Are you sure you want to delete this employee?")) {

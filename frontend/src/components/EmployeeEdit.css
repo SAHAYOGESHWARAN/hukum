@@ -1,0 +1,117 @@
+/* Container for the form */
+form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading for the form */
+h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Styling for all form inputs */
+input[type="text"],
+input[type="email"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Styling for radio buttons and checkbox */
+label {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+label input {
+    margin-right: 8px;
+}
+
+/* Button styles */
+button[type="submit"],
+button[type="button"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+button[type="submit"]:hover,
+button[type="button"]:hover {
+    background-color: #45a049;
+}
+
+/* Cancel button with different style */
+button[type="button"] {
+    background-color: #f44336;
+}
+
+button[type="button"]:hover {
+    background-color: #d32f2f;
+}
+
+/* Add some margin at the top of the page */
+div {
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* Styling the select dropdown */
+select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Form controls margin */
+input[type="text"],
+input[type="email"],
+input[type="file"],
+select {
+    margin-bottom: 16px;
+}
+
+/* File input styling */
+input[type="file"] {
+    padding: 5px;
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    form {
+        width: 90%;
+        padding: 15px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+}

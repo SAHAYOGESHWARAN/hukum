@@ -26,7 +26,20 @@ function Dashboard({ user }) {
                 </Link>
             </div>
 
-    
+            <h3>Employee List</h3>
+            <div className="employee-list">
+                {employees.map((employee) => (
+                    <div key={employee._id} className="employee-item">
+                        <p>{employee.name}</p>
+                        <p>{employee.email}</p>
+                        <p>{employee.designation}</p>
+                        <p>{employee.mobile}</p>
+                        <Link to={`/edit/${employee._id}`} className="btn edit-btn">
+                            Edit
+                        </Link>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

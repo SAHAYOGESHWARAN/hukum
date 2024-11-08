@@ -13,7 +13,7 @@ function CreateEmployee() {
         imgUpload: null,
     });
     const [message, setMessage] = useState('');
-    const [isLoading, setIsLoading] = useState(false); // for loading state
+    const [isLoading, setIsLoading] = useState(false);
 
     // Handle form change
     const handleChange = (e) => {
@@ -35,33 +35,42 @@ function CreateEmployee() {
         setFormData({ ...formData, course: updatedCourses });
     };
 
+    // Validate form inputs
+    const validateForm = () => {
+        if (!formData.name || !formData.email || !formData.mobile || !formData.gender) {
+            setMessage('All fields are required');
+            return false;
+        }
+        if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            setMessage('Invalid email format');
+            return false;
+        }
+        if (!/^\d{10}$/.test(formData.mobile)) {
+            setMessage('Mobile number must be 10 digits');
+            return false;
+        }
+        return true;
+    };
+
     // Submit form
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Validate fields
-        if (!formData.name || !formData.email || !formData.mobile || !formData.gender) {
-            setMessage('All fields are required');
-            return;
-        }
-        if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            setMessage('Invalid email');
-            return;
-        }
-        if (!/^\d+$/.test(formData.mobile)) {
-            setMessage('Invalid mobile number');
-            return;
-        }
+        // Validate form before submitting
+        if (!validateForm()) return;
 
         // Prepare form data for sending
         const formDataToSend = new FormData();
         for (const key in formData) {
-            formDataToSend.append(key, formData[key]);
+            if (key === 'course') {
+                formData.course.forEach(course => formDataToSend.append('course[]', course));
+            } else {
+                formDataToSend.append(key, formData[key]);
+            }
         }
 
-        // Clear previous messages before sending the request
         setMessage('');
-        setIsLoading(true); // Start loading
+        setIsLoading(true);
 
         try {
             const response = await axios.post('http://localhost:5000/api/employees/create', formDataToSend, {
@@ -70,93 +79,114 @@ function CreateEmployee() {
 
             if (response.data.success) {
                 setMessage('Employee created successfully!');
+                setFormData({
+                    name: '',
+                    email: '',
+                    mobile: '',
+                    designation: 'HR',
+                    gender: '',
+                    course: [],
+                    imgUpload: null,
+                });
             } else {
-                setMessage(' ' + response.data.message || 'Failed to create employee');
+                setMessage(response.data.message || 'Failed to create employee');
             }
         } catch (error) {
             setMessage(error.response?.data?.error || 'Error creating employee');
         } finally {
-            setIsLoading(false); // Stop loading
+            setIsLoading(false);
         }
     };
 
     return (
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <form onSubmit={handleSubmit} encType="multipart/form-data" className="create-employee-form">
             <h2>Create Employee</h2>
+            
             <input
                 type="text"
                 name="name"
                 placeholder="Name"
                 value={formData.name}
                 onChange={handleChange}
+                aria-required="true"
             />
+
             <input
                 type="email"
                 name="email"
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
+                aria-required="true"
             />
+
             <input
                 type="text"
                 name="mobile"
-                placeholder="Mobile No"
+                placeholder="Mobile No (10 digits)"
                 value={formData.mobile}
                 onChange={handleChange}
+                aria-required="true"
             />
 
-            <select name="designation" value={formData.designation} onChange={handleChange}>
+            <select name="designation" value={formData.designation} onChange={handleChange} aria-required="true">
                 <option value="HR">HR</option>
                 <option value="Manager">Manager</option>
                 <option value="Sales">Sales</option>
             </select>
-
-            <label>
-                <input
-                    type="radio"
-                    name="gender"
-                    value="M"
-                    checked={formData.gender === 'M'}
-                    onChange={handleChange}
-                /> Male
-            </label>
-            <label>
-                <input
-                    type="radio"
-                    name="gender"
-                    value="F"
-                    checked={formData.gender === 'F'}
-                    onChange={handleChange}
-                /> Female
-            </label>
-
-            <label>
-                <input
-                    type="checkbox"
-                    name="course"
-                    value="MCA"
-                    checked={formData.course.includes('MCA')}
-                    onChange={handleCheckboxChange}
-                /> MCA
-            </label>
-            <label>
-                <input
-                    type="checkbox"
-                    name="course"
-                    value="BCA"
-                    checked={formData.course.includes('BCA')}
-                    onChange={handleCheckboxChange}
-                /> BCA
-            </label>
-            <label>
-                <input
-                    type="checkbox"
-                    name="course"
-                    value="BSC"
-                    checked={formData.course.includes('BSC')}
-                    onChange={handleCheckboxChange}
-                /> BSC
-            </label>
+           <p>sex </p>
+            <div className="radio-group">
+                <label>
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="M"
+                        checked={formData.gender === 'M'}
+                        onChange={handleChange}
+                        aria-required="true"
+                    /> Male
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="F"
+                        checked={formData.gender === 'F'}
+                        onChange={handleChange}
+                        aria-required="true"
+                    /> Female
+                </label>
+            </div>
+            <p> Cource</p>
+            <div className="checkbox-group">
+                <label>
+                    <input
+                        type="checkbox"
+                        name="course"
+                        value="MCA"
+                        checked={formData.course.includes('MCA')}
+                        onChange={handleCheckboxChange}
+                    /> MCA
+                </label>
+                <label>
+                    <input
+                        type="checkbox"
+                        name="course"
+                        value="BCA"
+                        checked={formData.course.includes('BCA')}
+                        onChange={handleCheckboxChange}
+                    /> BCA
+                </label>
+                <label>
+                    <input
+                        type="checkbox"
+                        name="course"
+                        value="BSC"
+                        checked={formData.course.includes('BSC')}
+                        onChange={handleCheckboxChange}
+                    /> BSC
+                </label>
+            </div>
 
             <input type="file" name="imgUpload" accept=".jpg,.png" onChange={handleFileChange} />
 
@@ -164,7 +194,11 @@ function CreateEmployee() {
                 {isLoading ? 'Creating...' : 'Submit'}
             </button>
 
-            {message && <p className={isLoading ? 'loading' : ''}>{message}</p>}
+            {message && (
+                <p className={`message ${isLoading ? 'loading' : ''}`} aria-live="polite">
+                    {message}
+                </p>
+            )}
         </form>
     );
 }

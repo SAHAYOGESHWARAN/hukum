@@ -1,54 +1,78 @@
-
-div {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Table styling */
+/* Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    font-family: Arial, sans-serif;
+    background-color: #1e2133;
+    color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    animation: slideUp 1s ease;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
+/* Header and cell styling */
 th, td {
-    padding: 12px;
+    padding: 16px;
     text-align: left;
-    border: 1px solid #ddd;
+    border: 1px solid #444;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 th {
-    background-color: #f2f2f2;
+    background: linear-gradient(135deg, #007acc, #1f8ed9);
     font-weight: bold;
-    color: #333;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.8px;
+    animation: thGlow 3s ease-in-out infinite alternate;
 }
 
 td {
-    background-color: #fafafa;
+    background-color: #2a2e45;
+    font-size: 15px;
+    border-bottom: 1px solid #3c3f5a;
 }
 
 td img {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
+    border: 2px solid #555;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Header styling */
+/* Hover Effects */
+tr:hover td {
+    background-color: #3b3f5e;
+}
+
+td:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0 8px #4fc3f7;
+}
+
+/* Header Glow Animation */
 h2 {
-    font-size: 24px;
-    color: #333;
+    font-size: 28px;
+    color: #ffffff;
     text-align: center;
+    background: linear-gradient(90deg, #007acc, #4fc3f7);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: textGlow 3s ease-in-out infinite alternate;
 }
 
-/* Hover effect for rows */
-tr:hover {
-    background-color: #f5f5f5;
+/* Row transition on hover */
+tr {
+    transition: background-color 0.3s ease;
 }
 
-/* Small device responsiveness */
+/* Responsive Design */
 @media (max-width: 768px) {
     table {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     th, td {
@@ -56,7 +80,53 @@ tr:hover {
     }
 
     td img {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px #007acc, 0 0 20px #4fc3f7;
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 16px #007acc, 0 0 25px #4fc3f7;
+    }
+}
+
+@keyframes thGlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Gradient background for header cells */
+th {
+    background: linear-gradient(90deg, #007acc, #4fc3f7);
+    background-size: 200% 200%;
+    animation: thGradient 3s ease infinite alternate;
+}
+
+@keyframes thGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
     }
 }

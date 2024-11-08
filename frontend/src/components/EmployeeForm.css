@@ -1,73 +1,159 @@
-/* EmployeeForm.css */
-
-/* General form styling */
+/* General Form Styling */
 form {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2b2e4a, #1e1e2e);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    color: #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+    animation: fadeInForm 0.8s ease-in-out;
+    transition: transform 0.3s ease;
+    transform: scale(1);
 }
 
+form:hover {
+    transform: scale(1.01);
+}
+
+/* Label Styling */
 label {
     display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-    font-size: 16px;
+    margin: 14px 0 8px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #d4d4f5;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    transition: color 0.3s ease;
 }
 
+label:hover {
+    color: #4fc3f7;
+}
+
+/* Input Field Styling */
 input[type="text"],
 input[type="email"],
 input[type="file"],
 select {
     width: 100%;
-    padding: 8px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-input[type="radio"] {
-    margin-right: 5px;
-}
-
-input[type="checkbox"] {
-    margin-right: 10px;
-}
-
-button {
-    padding: 10px 15px;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 6px;
     font-size: 16px;
-    background-color: #007BFF;
-    color: white;
+    color: #e0e0e0;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="file"]:focus,
+select:focus {
+    border-color: #4fc3f7;
+    background-color: #2a2a45;
+    outline: none;
+    box-shadow: 0 0 10px rgba(79, 195, 247, 0.4);
+}
+
+/* Radio and Checkbox Styling */
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 6px;
+    accent-color: #4fc3f7;
+    transform: scale(1.2);
+}
+
+/* Button Styling */
+button {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #007acc, #4fc3f7);
+    color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 12px;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(90deg, #1f8ed9, #007acc);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(79, 195, 247, 0.5);
 }
 
-/* Error and success messages */
+/* Error and Success Messages */
 .alert {
     padding: 15px;
     margin-top: 20px;
-    background-color: #f44336;
     color: white;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-weight: bold;
+    animation: fadeInAlert 0.6s ease;
 }
 
-.success {
+.alert.error {
+    background-color: #e74c3c;
+}
+
+.alert.success {
     background-color: #4CAF50;
 }
 
-/* Specific input field styling */
+/* Specific Input Field Styling */
 input[type="text"],
 input[type="email"] {
     text-transform: capitalize;
+}
+
+/* File Input Styling */
+input[type="file"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #555;
+    color: #e0e0e0;
+    background-color: #333;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    form {
+        width: 90%;
+        padding: 20px;
+    }
+
+    label,
+    button {
+        font-size: 14px;
+    }
+}
+
+/* Animations */
+@keyframes fadeInForm {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInAlert {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

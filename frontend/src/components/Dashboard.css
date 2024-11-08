@@ -1,69 +1,175 @@
-/* Dashboard Container */
-.dashboard-container {
-    padding: 30px;
-    background-color: #e8f4f8;
-    text-align: left;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Full Screen Container */
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #eb78f6, #c7ee6b);
 }
 
-/* Heading styles */
+.dashboard-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #f0f0f0;
+    text-align: left;
+    border-radius: 12px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    animation: slideIn 0.8s ease;
+}
+
+/* Heading Styles */
 h2 {
-    font-size: 28px;
-    color: #2a2a2a;
-    font-weight: 600;
-    margin-bottom: 15px;
+    font-size: 32px;
+    color: #a6bdf0;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 0 8px rgba(0, 142, 204, 0.8);
+    animation: glowText 2s ease-in-out infinite alternate;
 }
 
 h3 {
-    font-size: 22px;
-    color: #555;
-    margin-bottom: 10px;
+    font-size: 24px;
+    color: #a6a6c3;
+    margin-bottom: 15px;
+    position: relative;
 }
 
-/* List styling */
+/* Section Titles */
+h3::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4fc3f7;
+    animation: expandUnderline 1s ease forwards;
+}
+
+/* List Styling */
 ul {
-    list-style: square;
-    padding-left: 20px;
+    list-style: none;
+    padding-left: 0;
 }
 
 ul li {
-    background-color: #fff;
+    background-color: #2d2f45;
     margin: 12px 0;
-    padding: 12px 18px;
-    border-radius: 6px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+    padding: 15px 18px;
+    color: #d6e0f0;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    animation: fadeInItem 1s ease;
 }
 
-/* List item hover effect */
+ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background-color: #4fc3f7;
+    border-radius: 8px 0 0 8px;
+    animation: slideInBefore 0.6s ease;
+}
+
 ul li:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(79, 195, 247, 0.6);
 }
 
 /* Actions Section */
 .home-actions {
-    margin-top: 25px;
+    margin-top: 35px;
     text-align: center;
+    animation: fadeIn 1s ease;
 }
 
-/* Button styles */
+/* Button Styles */
 .btn {
-    margin: 12px;
-    padding: 12px 22px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #f39c12;
+    margin: 15px;
+    padding: 15px 25px;
+    font-size: 18px;
+    color: #ffffff;
+    background: linear-gradient(90deg, #007acc, #005b9a);
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-decoration: none;
-    transition: all 0.3s ease-in-out;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Button hover effect */
 .btn:hover {
-    background-color: #e67e22;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(90deg, #1f8ed9, #007acc);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(79, 195, 247, 0.6);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInBefore {
+    from {
+        width: 0;
+    }
+    to {
+        width: 5px;
+    }
+}
+
+@keyframes fadeInItem {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowText {
+    0% {
+        text-shadow: 0 0 10px rgba(0, 142, 204, 0.8), 0 0 15px #007acc, 0 0 25px #4fc3f7;
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(0, 142, 204, 0.8), 0 0 20px #007acc, 0 0 35px #4fc3f7;
+    }
+}
+
+@keyframes expandUnderline {
+    from {
+        width: 0;
+    }
+    to {
+        width: 50px;
+    }
 }

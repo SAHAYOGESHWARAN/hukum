@@ -5,14 +5,26 @@
     max-width: 600px;
     margin: 0 auto;
     padding: 30px;
-    background: linear-gradient(135deg, #1e1e2f, #3a3a5c);
+    background: linear-gradient(135deg, #d0f14d, #3a3a5c);
     border-radius: 12px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 8px 16px rgba(225, 235, 94, 0.6);
     color: #eaeaea;
     font-family: 'Arial', sans-serif;
-    animation: slideInFromBottom 0.8s ease-in-out;
+    animation: slideInFromBottom 0.8s ease-in-out, pulseBackground 5s infinite alternate;
     position: relative;
     overflow: hidden;
+}
+
+@keyframes pulseBackground {
+    0% {
+        background: linear-gradient(135deg, #8d8ddf, #c9c9e3);
+    }
+    50% {
+        background: linear-gradient(135deg, #e9a950, #8fef47);
+    }
+    100% {
+        background: linear-gradient(135deg, #8d8daf, #2f2f45);
+    }
 }
 
 .create-employee-form h2 {
@@ -25,7 +37,18 @@
     background: linear-gradient(90deg, #4caf50, #2196f3);
     -webkit-background-clip: text;
     color: transparent;
-    animation: textGlow 2s ease-in-out infinite alternate;
+    animation: textGlow 2s ease-in-out infinite alternate, bounceInFromTop 1s ease-in-out forwards;
+}
+
+@keyframes bounceInFromTop {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .create-employee-form input[type="text"],
@@ -40,7 +63,19 @@
     background-color: #2e2e3f;
     color: #eaeaea;
     font-size: 16px;
-    transition: background-color 0.3s, transform 0.2s ease-in-out;
+    transition: background-color 0.3s, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .create-employee-form input:focus,
@@ -48,7 +83,7 @@
     background-color: #454565;
     transform: scale(1.02);
     outline: none;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4), 0px 0px 12px rgba(255, 255, 255, 0.2);
 }
 
 .create-employee-form select {
@@ -63,6 +98,17 @@
     animation: fadeInFromRight 1s ease;
 }
 
+@keyframes fadeInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .radio-group label,
 .checkbox-group label {
     font-size: 16px;
@@ -70,7 +116,14 @@
     cursor: pointer;
     position: relative;
     padding: 5px;
-    transition: color 0.2s;
+    transition: color 0.2s, transform 0.2s ease-in-out;
+    animation: pulseLabel 2s infinite alternate;
+}
+
+@keyframes pulseLabel {
+    0% { transform: scale(1); color: #c0c0d0; }
+    50% { transform: scale(1.1); color: #ffffff; }
+    100% { transform: scale(1); color: #c0c0d0; }
 }
 
 .radio-group label:hover,
@@ -96,6 +149,18 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease-in-out;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-in-out, pulseButton 1.5s infinite alternate;
+}
+
+@keyframes pulseButton {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .create-employee-form button:disabled {
@@ -120,28 +185,6 @@
     color: #e0e0f0;
 }
 
-@keyframes slideInFromBottom {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInFromRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
 @keyframes textGlow {
     0% {
         text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5), 0px 0px 10px #4caf50, 0px 0px 20px #2196f3;
@@ -161,5 +204,18 @@
 
     .create-employee-form h2 {
         font-size: 20px;
+    }
+
+    .create-employee-form input[type="text"],
+    .create-employee-form input[type="email"],
+    .create-employee-form select,
+    .create-employee-form input[type="file"] {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .create-employee-form button {
+        padding: 12px;
+        font-size: 16px;
     }
 }

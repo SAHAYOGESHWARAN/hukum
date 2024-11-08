@@ -56,33 +56,7 @@ function Dashboard({ user }) {
                 </button>
             </div>
 
-            <h3>Employee List</h3>
-            <div className="employee-list">
-                {employees.length > 0 ? (
-                    employees.map((employee) => (
-                        <div key={employee._id} className="employee-item">
-                            <p><strong>Name:</strong> {employee.name}</p>
-                            <p><strong>Email:</strong> {employee.email}</p>
-                            <p><strong>Designation:</strong> {employee.designation}</p>
-                            <p><strong>Mobile:</strong> {employee.mobile}</p>
-                            <button
-                                onClick={() => handleEditEmployee(employee._id)}
-                                className="btn edit-btn"
-                            >
-                                Edit Employee
-                            </button>
-                            <button
-                                onClick={() => handleDeleteEmployee(employee._id)}
-                                className="btn delete-btn"
-                            >
-                                Delete Employee
-                            </button>
-                        </div>
-                    ))
-                ) : (
-                    <p>No employees found.</p>
-                )}
-            </div>
+     
         </div>
     );
 }

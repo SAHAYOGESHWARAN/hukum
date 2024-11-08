@@ -1,94 +1,185 @@
-/* General Styling */
-.dashboard-container {
-    padding: 30px;
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    color: #f0f0f0;
-    text-align: left;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    font-family: Arial, sans-serif;
-}
+/* Dashboard.css */
 
-/* Heading Styles */
-h2, h3 {
-    color: #a6bdf0;
-    text-shadow: 0 0 8px rgba(0, 142, 204, 0.8);
-    margin-bottom: 15px;
-}
-
-h2 {
-    font-size: 28px;
-}
-
-/* Search and Actions Container */
-.search-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.search-input {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    width: 50%;
-}
-
-/* Button Styles */
-.btn {
-    padding: 12px 22px;
-    margin: 12px;
+body {
+    background: linear-gradient(135deg, #ffffff, #8c89df);
     color: #ffffff;
-    background: linear-gradient(90deg, #007acc, #005b9a);
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.3s ease, transform 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    animation: backgroundAnimation 12s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundAnimation {
+    0% { background: linear-gradient(135deg, #41c0f3, #c7c7da); }
+    25% { background: linear-gradient(135deg, #f87c8c, #d4eb62); }
+    50% { background: linear-gradient(135deg, #f94ece, #fd74fa); }
+    75% { background: linear-gradient(135deg, #e5f00e, #c2f786); }
+    100% { background: linear-gradient(135deg, #321f4d, #f5a591); }
+}
+
+.dashboard-container {
+    width: 90%;
+    max-width: 1200px;
+    padding: 3rem;
+    background: rgba(82, 82, 148, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(255, 100, 200, 0.5), 0 0 60px rgba(255, 200, 100, 0.3);
+    animation: fadeIn 1.2s ease-in-out forwards, colorShift 10s infinite alternate;
+    backdrop-filter: blur(8px);
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+@keyframes colorShift {
+    0% { background-color: rgba(30, 30, 70, 0.9); }
+    50% { background-color: rgba(50, 50, 90, 0.9); }
+    100% { background-color: rgba(70, 70, 120, 0.9); }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2, h3 {
+    color: #ffb6c1;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-shadow: 0 0 8px rgba(199, 27, 27, 0.2);
+    animation: bounceIn 1s ease-in-out, textPulse 2s infinite alternate;
+}
+
+@keyframes textPulse {
+    0% { color: #ffb6c1; }
+    50% { color: #f4b400; }
+    100% { color: #f7ab32; }
+}
+
+@keyframes bounceIn {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.home-actions {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 2rem;
+}
+
+.home-actions .btn {
+    background: linear-gradient(45deg, #ff6ec7, #f4b400);
+    color: #ffffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
     cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+    text-transform: uppercase;
+    animation: buttonPulse 3s infinite alternate;
 }
 
-.btn:hover {
-    background: linear-gradient(90deg, #1f8ed9, #007acc);
+@keyframes buttonPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1.05); }
 }
 
-/* Employee List Styles */
+.home-actions .btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 182, 193, 0.6), 0 0 50px rgba(255, 182, 193, 0.4);
+    background: linear-gradient(45deg, #f4b400, #ff6ec7);
+}
+
 .employee-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    gap: 1.8rem;
+    margin-top: 2rem;
 }
 
 .employee-item {
-    background-color: #2d2f45;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #212155, #312a70);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
+    animation: fadeInUp 0.8s ease-in-out both;
     position: relative;
+    overflow: hidden;
+    color: #ffffff;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.5s ease-in-out;
 }
 
-.employee-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
+.employee-item:hover {
+    background: linear-gradient(135deg, #2a2a78, #412a90);
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(255, 182, 193, 0.6);
 }
 
-/* Error and Loading Styles */
-.loading-spinner {
-    font-size: 18px;
-    color: #4fc3f7;
-    text-align: center;
-    margin: 20px 0;
+.employee-item p {
+    margin: 0.4rem 0;
+    color: #f4b400;
+    font-size: 1.05rem;
+    animation: textFadeIn 1.5s ease;
 }
 
-.error-message {
-    color: #ff4d4d;
-    text-align: center;
-    margin: 20px 0;
+@keyframes textFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.no-employees-message {
-    color: #a6a6c3;
-    text-align: center;
+.employee-item .btn {
+    background: linear-gradient(45deg, #00eaff, #ff4081);
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 234, 255, 0.5);
+    animation: bounceButton 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes bounceButton {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+.employee-item .btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #ff4081, #00eaff);
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+}
+
+.delete-btn {
+    background: linear-gradient(45deg, #ff5c5c, #ff3c3c);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 80, 80, 0.5);
+    transition: background 0.3s, box-shadow 0.3s;
+    animation: shakeDelete 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes shakeDelete {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(-2px); }
+}
+
+.delete-btn:hover {
+    box-shadow: 0 0 20px rgba(255, 80, 80, 0.7);
+    background: linear-gradient(45deg, #ff3c3c, #ff5c5c);
 }
